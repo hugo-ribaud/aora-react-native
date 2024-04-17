@@ -26,5 +26,8 @@
   "typescript.suggest.objectLiteralMethodSnippets.enabled": false,
   "typescript.suggest.paths": false,
   "typescript.suggestionActions.enabled": false,
-  "typescript.surveys.enabled": false
+  "typescript.surveys.enabled": false,
+  "typescript.tsc.autoDetect": "off",
+  "typescript.tsc.watch": "off",
+  "typescript.validate.enableWithJavaScript": false
 }
