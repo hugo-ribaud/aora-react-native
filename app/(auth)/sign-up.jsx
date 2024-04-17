@@ -4,12 +4,12 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { View, Text, ScrollView, Dimensions, Alert, Image } from 'react-native';
 
 import { images } from '../../constants';
-// import { createUser } from '../../lib/appwrite';
+import { createUser } from '../../lib/appwrite';
 import { CustomButton, FormField } from '../../components';
-// import { useGlobalContext } from '../../context/GlobalProvider';
+import { useGlobalContext } from '../../context/GlobalProvider';
 
 const SignUp = () => {
-  // const { setUser, setIsLogged } = useGlobalContext();
+  const { setUser, setIsLogged } = useGlobalContext();
 
   const [isSubmitting, setSubmitting] = useState(false);
   const [form, setForm] = useState({
