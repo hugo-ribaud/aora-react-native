@@ -1,11 +1,21 @@
 // @ts-nocheck
-import { View, Text, FlatList, Image, RefreshControl } from 'react-native';
-import React, { useState } from 'react';
+import {
+  View,
+  Text,
+  FlatList,
+  Image,
+  RefreshControl,
+  Alert,
+} from 'react-native';
+import React, { useEffect, useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { images } from '../../constants';
-import { EmptyState, SearchInput, Trending } from '../../components';
+import { EmptyState, SearchInput, Trending, VideoCard } from '../../components';
+import { getAllPosts } from '../../lib/appwrite';
+import useAppwrite from '../../lib/useAppwrite';
 
 const Home = () => {
+  const { data: posts, refetch } = useAppwrite(getAllPosts);
   const [refreshing, setRefreshing] = useState(false);
 
   const onRefresh = async () => {
@@ -13,15 +23,16 @@ const Home = () => {
     await refetch();
     setRefreshing(false);
   };
+
   return (
     <SafeAreaView className='bg-primary h-full'>
       <FlatList
-        data={[{ id: 1 }, { id: 2 }, { id: 3 }]}
-        // data={[]}
+        // data={[{ id: 1 }, { id: 2 }, { id: 3 }]}
+        data={posts}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <View>
-            <Text className='text-3xl text-white'>{item.id}</Text>
+            <VideoCard video={item} />
           </View>
         )}
         ListHeaderComponent={() => (
