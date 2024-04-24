@@ -1,7 +1,7 @@
 // @ts-nocheck
 import { useEffect } from 'react';
 import { useFonts } from 'expo-font';
-// import 'react-native-url-polyfill/auto';
+import 'react-native-url-polyfill/auto';
 import { SplashScreen, Stack } from 'expo-router';
 import React from 'react';
 import GlobalProvider from '../context/GlobalProvider';
@@ -42,7 +42,7 @@ const RootLayout = () => {
     <GlobalProvider>
       <Stack>
         <Stack.Screen
-          name='index'
+          name='(tabs)'
           options={{ headerShown: false }}
         />
         <Stack.Screen
@@ -50,7 +50,11 @@ const RootLayout = () => {
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name='(tabs)'
+          name='index'
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name='search/[query]'
           options={{ headerShown: false }}
         />
       </Stack>
